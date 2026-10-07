@@ -1,0 +1,169 @@
+:root {
+  /* Marca Nk Electronics */
+  --brand-red:         #FF003C;      /* Rojo principal: CTA, ofertas, badges principales */
+  --brand-red-hover:   #D60032;      /* Rojo hover / pressed */
+  --brand-red-glow:    rgba(255, 0, 60, 0.35); /* Resplandor rojo */
+
+  --brand-purple:       #7C3AED;      /* Morado acento: etiquetas tech, gradientes, estados secundarios */
+  --brand-purple-hover: #6D28D9;      /* Morado hover */
+  --brand-purple-glow:  rgba(124, 58, 237, 0.35);
+
+  --gradient-brand:     linear-gradient(135deg, #FF003C 0%, #7C3AED 100%);
+  --gradient-dark:      linear-gradient(180deg, #16161E 0%, #09090B 100%);
+  --gradient-card:      linear-gradient(145deg, rgba(26, 26, 34, 0.9) 0%, rgba(18, 18, 23, 0.95) 100%);
+
+  /* Neutros & Superficies (Dark Mode Base) */
+  --bg-main:    #09090B;        /* Fondo principal de página (Negro noche) */
+  --surface-1:  #121217;        /* Tarjetas de producto, paneles principales */
+  --surface-2:  #1A1A22;        /* Campos de búsqueda, modales, headers */
+  --surface-3:  #252530;        /* Estados de hover en elementos de lista */
+  
+  /* Textos y Bordes */
+  --text-main:  #FFFFFF;        /* Texto principal de alto contraste */
+  --text-muted: #9CA3AF;        /* Texto secundario y etiquetas */
+  --text-dark:  #09090B;        /* Texto sobre fondos rojos/claros */
+  --line:       #272734;        /* Divisores y bordes sutiles */
+  --line-focus: #7C3AED;        /* Borde en foco */
+
+  /* Estados de Sistema */
+  --success: #10B981;        /* "En Stock", "Entrega hoy" */
+  --danger:  #FF003C;        /* Descuentos, "Últimas unidades" */
+  --warning: #F59E0B;        /* Estrellas de valoración */
+  --info:    #3B82F6;        /* Info técnica */
+
+  /* Tipografía */
+  --font-main: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Outfit", system-ui, sans-serif;
+
+  /* Espaciado */
+  --container: 1280px;
+  --gutter: clamp(16px, 3vw, 32px);
+  --header-h: 72px;
+
+  /* Bordes y Sombras */
+  --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-pill: 999px;
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 25px rgba(255, 0, 60, 0.25);
+  --shadow-purple-glow: 0 0 25px rgba(124, 58, 237, 0.25);
+}
+
+/* Reset y Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Scrollbar Personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: #252530;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-purple);
+}
+
+/* Layout Utilities */
+.container {
+  width: min(100% - (var(--gutter) * 2), var(--container));
+  margin-inline: auto;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Badge Base */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-red {
+  background: var(--brand-red);
+  color: #FFFFFF;
+  box-shadow: 0 0 12px var(--brand-red-glow);
+}
+
+.badge-purple {
+  background: var(--brand-purple);
+  color: #FFFFFF;
+  box-shadow: 0 0 12px var(--brand-purple-glow);
+}
+
+.badge-outline {
+  border: 1px solid var(--line);
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Glassmorphism Panel */
+.glass-panel {
+  background: rgba(18, 18, 23, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+}
